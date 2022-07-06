@@ -1,12 +1,26 @@
+import { useEffect, useState } from "react";
 
 export default function App() {
+  const [solution, setSolution] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:3001/solutions")
+      .then((res) => res.json())
+      .then((json) => {
+        
+        //random integer between 0-14
+        const randomSolution = json[Math.floor(Math.random()*json.length)]
+        setSolution(randomSolution.word)
+      });
+  }, [setSolution]);
+
   return (
     <div className="App">
       <h1> Food Words </h1>
+      {solution && <div> Solution is: {solution} </div>}
     </div>
   );
 }
-
 
 /*
 SOLUTION
@@ -52,4 +66,7 @@ CHECKING SUBMITTED WORDS (each turn)
 
   - 
   JSON file, 3rd party api, own database served in mongodb
+
+  // localhost:3000/solutions
+// using json server wraps api endpoints
 */
