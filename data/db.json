@@ -1,0 +1,19 @@
+{
+  "solutions": [
+    {"id":1, "word":"onion" },
+    {"id":2, "word":"peach" },
+    {"id":3, "word":"pecan" },
+    {"id":4, "word":"apple" },
+    {"id":5, "word":"grape" },
+    {"id":6, "word": "lemon"},
+    {"id":7, "word": "mango"},
+    {"id":8, "word": "olive"},
+    {"id":9, "word":"donut" },
+    {"id":10, "word":"prune" },
+    {"id":11, "word":"melon" },
+    {"id":12, "word": "guava"},
+    {"id":13, "word": "pizza"},
+    {"id":14, "word": "bread"},
+    {"id":15, "word": "fries"}
+]
+}
