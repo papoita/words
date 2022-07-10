@@ -12,6 +12,6 @@ export default function Words({ solution}) {
   }, [handleKeyup])
 
   return (
-    <div>Words</div>
+    <div>currentGuess - {currentGuess}</div>
   )
 }

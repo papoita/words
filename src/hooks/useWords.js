@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const useWords = (solution) => {
   const [turn, setTurn] = useState(0);
-  const [currentGuess, setCurrentGuess] = useState("");// every time they hit a new key with handlekeyup
+  const [currentGuess, setCurrentGuess] = useState(""); // every time they hit a new key with handlekeyup
   const [guesses, setGuesses] = useState([]); //each guess is an array -formatGuess includes color
   const [history, setHistory] = useState([]); // each guess is a string, no duplicate guesses
   const [isCorrect, setIsCorrect] = useState(false); //only true when user wins the game
@@ -18,8 +18,21 @@ const useWords = (solution) => {
 
   //handle keyup event & track current guess
   //if user presses enter, add submits the new guess
-  const handleKeyup = ({key}) => {
-    console.log(key)
+  const handleKeyup = ({ key }) => {
+    // console.log(key) would record any key including delete and shift, so you want to have only letters a-z using regular expressions
+    if (key === "Backspace") {
+      setCurrentGuess((prev) => {
+        return prev.slice(0, -1);
+      });
+      return
+    }
+    if (/^[A-Za-z]$/.test(key)) {
+      if (currentGuess.length < 5) {
+        setCurrentGuess((prev) => {
+          return prev + key;
+        });
+      }
+    }
   };
 
   return { turn, currentGuess, guesses, isCorrect, handleKeyup };
