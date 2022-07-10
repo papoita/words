@@ -8,13 +8,13 @@ const formatGuess = () =>{
 
 //add a new guess to guesss state
 //update the isCorrect state if the guess is correct
-// add one to the turn state
+// add one to the turn state, keep track of turn
 const addNewGuess = () => {
 
 }
 
 //handle keyup event & track current guess
-//if user presses enter, add the new guess
+//if user presses enter, add submits the new guess
 const handleKeyup = () => {
 
 }
