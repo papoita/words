@@ -18,7 +18,9 @@ const useWords = (solution) => {
 
   //handle keyup event & track current guess
   //if user presses enter, add submits the new guess
-  const handleKeyup = () => {};
+  const handleKeyup = ({key}) => {
+    console.log(key)
+  };
 
   return { turn, currentGuess, guesses, isCorrect, handleKeyup };
 };
