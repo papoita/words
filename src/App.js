@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Words from "./components/Words";
 
 export default function App() {
   const [solution, setSolution] = useState(null);
@@ -7,17 +8,16 @@ export default function App() {
     fetch("http://localhost:3001/solutions")
       .then((res) => res.json())
       .then((json) => {
-        
         //random integer between 0-14
-        const randomSolution = json[Math.floor(Math.random()*json.length)]
-        setSolution(randomSolution.word)
+        const randomSolution = json[Math.floor(Math.random() * json.length)];
+        setSolution(randomSolution.word);
       });
   }, [setSolution]);
 
   return (
     <div className="App">
       <h1> Food Words </h1>
-      {solution && <div> Solution is: {solution} </div>}
+      {solution && <Words solution={solution} />}
     </div>
   );
 }
