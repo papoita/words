@@ -1,17 +1,19 @@
-import React, { useEffect } from 'react'
-import useWords from '../hooks/useWords';
+import React, { useEffect } from "react";
+import useWords from "../hooks/useWords";
 
-
-export default function Words({ solution}) {
-  const {currentGuess, handleKeyup} = useWords(solution);
+export default function Words({ solution }) {
+  const { currentGuess, handleKeyup } = useWords(solution);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyup);
 
     return () => window.removeEventListener("keyup", handleKeyup);
-  }, [handleKeyup])
+  }, [handleKeyup]);
 
   return (
-    <div>currentGuess - {currentGuess}</div>
-  )
+    <>
+      <div>solution - {solution} </div>
+      <div>currentGuess - {currentGuess}</div>
+    </>
+  );
 }

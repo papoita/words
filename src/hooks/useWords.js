@@ -10,7 +10,31 @@ const useWords = (solution) => {
   //format a new guess into an array of letter objects
   //eg. [{key: "a", color: "green"}]
   const formatGuess = () => {
-    console.log("formatting the guess:", currentGuess)
+    console.log("formatting the guess:", currentGuess);
+    
+    //spread the string into separate letters
+    let solutionArray = [...solution];
+    let formattedGuess = [...currentGuess].map((letter) => {
+      return { key: letter, color: "grey" };
+    });
+
+    //is the letter in the correct poisition assign green
+    formattedGuess.forEach((letter, i) => {
+      if (solutionArray[i] === letter.key) {
+        formattedGuess[i].color = "green";
+        solutionArray[i] = null;
+      }
+    });
+
+    // is the letter correct but not in the right position assign yellow
+    formattedGuess.forEach((letter, i) => {
+      if (solutionArray.includes(letter.key) && letter.color !== "green") {
+        formattedGuess[i].color = "yellow";
+        solutionArray[solutionArray.indexOf(letter.key)] = null;
+      }
+    });
+    //is the letter not in the game assign grey
+    return formattedGuess;
   };
 
   //add a new guess to guesss state
@@ -38,7 +62,8 @@ const useWords = (solution) => {
         console.log("Word has to be 5 characters long");
         return;
       }
-      formatGuess();
+      const formatted = formatGuess();
+      console.log(formatted);
     }
 
     if (key === "Backspace") {
