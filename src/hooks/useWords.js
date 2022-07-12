@@ -56,7 +56,7 @@ const useWords = (solution) => {
     setTurn((prevTurn) => {
       return prevTurn + 1;
     });
-    setCurrentGuess("");
+    setCurrentGuess(""); //reset current guess with blank slate
   };
 
   //handle keyup event & track current guess
