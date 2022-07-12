@@ -3,15 +3,15 @@ import { useState } from "react";
 const useWords = (solution) => {
   const [turn, setTurn] = useState(0);
   const [currentGuess, setCurrentGuess] = useState(""); // every time they hit a new key with handlekeyup
-  const [guesses, setGuesses] = useState([]); //each guess is an array -formatGuess includes color
-  const [history, setHistory] = useState(["hello", "ninja"]); // each guess is a string, no duplicate guesses
+  const [guesses, setGuesses] = useState([...Array(6)]); //each guess is an array -formatGuess includes color
+  const [history, setHistory] = useState([]); // each guess is a string, no duplicate guesses
   const [isCorrect, setIsCorrect] = useState(false); //only true when user wins the game
 
   //format a new guess into an array of letter objects
   //eg. [{key: "a", color: "green"}]
   const formatGuess = () => {
     console.log("formatting the guess:", currentGuess);
-    
+
     //spread the string into separate letters
     let solutionArray = [...solution];
     let formattedGuess = [...currentGuess].map((letter) => {
@@ -40,7 +40,24 @@ const useWords = (solution) => {
   //add a new guess to guesss state
   //update the isCorrect state if the guess is correct
   // add one to the turn state, keep track of turn
-  const addNewGuess = () => {};
+  // add guess to string format
+  const addNewGuess = (formattedGuess) => {
+    if (currentGuess === solution) {
+      setIsCorrect(true);
+    }
+    setGuesses((prevGuesses) => {
+      let newGuesses = [...prevGuesses]; // 1st time all undefined
+      newGuesses[turn] = formattedGuess;
+      return newGuesses;
+    });
+    setHistory((prevHistory) => {
+      return [...prevHistory, currentGuess];
+    });
+    setTurn((prevTurn) => {
+      return prevTurn + 1;
+    });
+    setCurrentGuess("");
+  };
 
   //handle keyup event & track current guess
   //if user presses enter, add submits the new guess
@@ -62,8 +79,10 @@ const useWords = (solution) => {
         console.log("Word has to be 5 characters long");
         return;
       }
+      //after the formatted function to green, yellow or grey
       const formatted = formatGuess();
       console.log(formatted);
+      addNewGuess(formatted);
     }
 
     if (key === "Backspace") {
