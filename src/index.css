@@ -24,7 +24,7 @@ h1 {
   display: block;
   width: 60px;
   height: 60px;
-  border: 1px solid blue;
+  border: 1px solid grey;
   margin: 4px;
   text-align: center;
   line-height: 60px;
@@ -34,20 +34,20 @@ h1 {
 }
 
 .row > div.green {
-  background: green;
-  border-color: green;
+  --background: #008a00;
+  --border-color:  #008a00;
   animation: flip 0.5s ease forwards;
 }
 
 .row > div.grey {
-  background: grey;
-  border-color: grey;
+  --background: grey;
+  --border-color: grey;
   animation: flip 0.5s ease forwards;
 }
 
 .row > div.yellow {
-  background: yellow;
-  border-color: yellow;
+  --background: #ffd500;
+  --border-color: #ffd500;
   animation: flip 0.5s ease forwards;
 }
 
@@ -72,17 +72,27 @@ h1 {
 @keyframes flip{
   0% {
     transform: rotateX(0);
+    background: #fff;
+    border-color: #333;
   }
 
   45% {
     transform: rotateX(90deg);
+    background: #fff;
+    border-color: #333;
   }
 
   55% {
     transform: rotateX(90deg);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #fff;
   }
 
   100% {
     transform: rotateX(0);
+    background: var(--background);
+    border-color: var(--border-color);
+    color: #fff;
   }
 }
