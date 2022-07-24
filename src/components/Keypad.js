@@ -12,7 +12,7 @@ export default function Keypad() {
   }, []);
 
   return (
-    <div className="Keypad">
+    <div className="keypad">
       {letters &&
         letters.map((letter) => {
           return <div key={letter.key}>{letter.key}</div>;
