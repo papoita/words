@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import useWords from "../hooks/useWords";
 import Grid from "./Grid";
+import Keypad from "./Keypad";
 
 export default function Words({ solution }) {
   const { currentGuess, handleKeyup, guesses, isCorrect, turn } = useWords(solution);
@@ -20,6 +21,7 @@ export default function Words({ solution }) {
       <div>solution - {solution} </div>
       <div>currentGuess - {currentGuess}</div>
       <Grid currentGuess={currentGuess} guesses= {guesses} turn = {turn}/>
+      <Keypad/>
     </>
   );
 }
