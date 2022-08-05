@@ -9,12 +9,24 @@ export default function Words({ solution }) {
   useEffect(() => {
     window.addEventListener("keyup", handleKeyup);
 
-    return () => window.removeEventListener("keyup", handleKeyup);
-  }, [handleKeyup]);
+    if(isCorrect){
+      console.log("CONGRATS! you win")
+      alert("CONGRATS! you win!")
+      window.removeEventListener("keyup", handleKeyup);
+    }
 
-  useEffect(() => {
-    console.log(guesses, turn, isCorrect)
-  }, [guesses, turn, isCorrect]);
+    if(turn > 5){
+      console.log("Sorry, you are out of guesses")
+      alert("Sorry, you are out of guesses")
+      window.removeEventListener("keyup", handleKeyup);
+    }
+
+    return () => window.removeEventListener("keyup", handleKeyup);
+  }, [handleKeyup, isCorrect, turn]);
+
+  // useEffect(() => {
+  //   console.log(guesses, turn, isCorrect)
+  // }, [guesses, turn, isCorrect]);
 
   return (
     <>
