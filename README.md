@@ -24,6 +24,12 @@ In this words project
 
 * ⚪ Grey = not in game word
 
+## You Win 
+!["Winning Food Words"](/docs/winGame.gif)
+
+## End of Game
+!["Loosing Food Words"](/docs/endOfGame.gif)
+
 # To Setup
 1. install dependencies with 
 
