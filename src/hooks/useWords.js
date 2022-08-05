@@ -12,6 +12,7 @@ const useWords = (solution) => {
   //eg. [{key: "a", color: "green"}]
   const formatGuess = () => {
     console.log("formatting the guess:", currentGuess);
+    console.log("solution", solution);
 
     //spread the string into separate letters
     let solutionArray = [...solution];
