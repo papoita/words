@@ -4,7 +4,7 @@ import Grid from "./Grid";
 import Keypad from "./Keypad";
 
 export default function Words({ solution }) {
-  const { currentGuess, handleKeyup, guesses, isCorrect, turn } = useWords(solution);
+  const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } = useWords(solution);
 
   useEffect(() => {
     window.addEventListener("keyup", handleKeyup);
@@ -18,10 +18,10 @@ export default function Words({ solution }) {
 
   return (
     <>
-      <div>solution - {solution} </div>
-      <div>currentGuess - {currentGuess}</div>
-      <Grid currentGuess={currentGuess} guesses= {guesses} turn = {turn}/>
-      <Keypad/>
+      {/* <div>solution - {solution} </div>
+      <div>currentGuess - {currentGuess}</div> */}
+      <Grid currentGuess={currentGuess} guesses = {guesses} turn = {turn}/>
+      <Keypad usedKeys = {usedKeys}/>
     </>
   );
 }

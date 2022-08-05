@@ -6,6 +6,7 @@ const useWords = (solution) => {
   const [guesses, setGuesses] = useState([...Array(6)]); //each guess is an array -formatGuess includes color
   const [history, setHistory] = useState([]); // each guess is a string, no duplicate guesses
   const [isCorrect, setIsCorrect] = useState(false); //only true when user wins the game
+  const [usedKeys, setUsedKeys] = useState({}) // {a: 'green;, b: 'yellow', c: 'grey'} - letter only are in this obj if the user has used them
 
   //format a new guess into an array of letter objects
   //eg. [{key: "a", color: "green"}]
@@ -56,6 +57,31 @@ const useWords = (solution) => {
     setTurn((prevTurn) => {
       return prevTurn + 1;
     });
+
+    setUsedKeys((prevUsedKeys) => {
+      let newKeys = {...prevUsedKeys}
+      console.log("newKeys", newKeys);
+
+      formattedGuess.forEach((letter) => {
+        const currentColor = newKeys[letter.key]
+
+        if(letter.color === "green"){
+          newKeys[letter.key] = "green";
+          return
+        }
+
+        if(letter.color === "yellow" && currentColor !== "green"){
+          newKeys[letter.key] = "yellow";
+          return
+        }
+
+        if(letter.color === "grey" && currentColor !== "green" && currentColor !== "yellow"){
+          newKeys[letter.key] = "grey";
+          return
+        }
+      })
+      return newKeys;
+    })
     setCurrentGuess(""); //reset current guess with blank slate
   };
 
@@ -77,7 +103,7 @@ const useWords = (solution) => {
       //if words is  5 characters long
       if (currentGuess.length !== 5) {
         console.log("Word has to be 5 characters long");
-        return;
+        return  ;
       }
       //after the formatted function to green, yellow or grey
       const formatted = formatGuess();
@@ -100,7 +126,7 @@ const useWords = (solution) => {
     }
   };
 
-  return { turn, currentGuess, guesses, isCorrect, handleKeyup };
+  return { turn, currentGuess, guesses, isCorrect, usedKeys,  handleKeyup }
   
 };
 
