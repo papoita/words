@@ -1,16 +1,16 @@
 body {
   text-align: center;
-  font-size: 1em;
+  font-size: 1 em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
 }
 
 h1 {
-  font-size: 1.2 em;
+  font-size: 65px;
   padding: 20px 0;
   border-bottom: 1px solid #eee;
   margin: 0 0 30px 0;
-  color: #333;
+  color: #001460;
 
 }
 
@@ -34,20 +34,20 @@ h1 {
 }
 
 .row > div.green {
-  --background: #008a00;
-  --border-color:  #008a00;
+  --background: #0e3aea;
+  --border-color:  #0e3aea;
   animation: flip 0.5s ease forwards;
 }
 
 .row > div.grey {
-  --background: grey;
-  --border-color: grey;
+  --background: #a1a1a1;
+  --border-color: #a1a1a1;
   animation: flip 0.5s ease forwards;
 }
 
 .row > div.yellow {
-  --background: #ffd500;
-  --border-color: #ffd500;
+  --background: #e17604;
+  --border-color: #e17604;
   animation: flip 0.5s ease forwards;
 }
 
@@ -85,6 +85,25 @@ h1 {
   border-radius: 6px;
   line-height: 50px;
 }
+
+.keypad > div.green {
+  background: #0e3aea;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+
+.keypad > div.yellow {
+  background: #e17604;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+
+.keypad > div.grey {
+  background: #a1a1a1;
+  color: #fff;
+  transition: all 0.3s ease-in;
+}
+
 
 /* animations */
 
